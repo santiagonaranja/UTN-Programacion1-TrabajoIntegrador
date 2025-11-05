@@ -94,6 +94,174 @@ def asignar_poblacion_superficie_CSV(indice, nueva_poblacion, nueva_superficie):
         archivo.write(header + "\n")
         archivo.writelines(datos)
 
+def printpaises(paises):
+    if not paises:
+        print("No hay países para mostrar.")
+        return
+    print("=======")
+    for p in paises:
+        print(f"NOMBRE: {p['NOMBRE']}, POBLACION: {p['POBLACION']}, SUPERFICIE: {p['SUPERFICIE']}, CONTINENTE: {p['CONTINENTE']}")
+    print("=======")
+
+def filtrar_paises(paises): ## Funcion para filtrar paises segun diferentes criterios
+
+    if not paises:
+        print("No hay países cargados para filtrar.")
+        return []
+
+    while True:
+        print("=== FILTROS ===")
+        print("1) Por continente")
+        print("2) Por población ")
+        print("3) Por superficie")
+        print("4) Cantidad de paises por continente")
+        print("5) Volver")
+        opc = input("Opción: ").strip()
+
+        if opc == "1":
+            parte = input("Ingrese continente (entero o parcial, ej: 'amer' para América): ").lower().strip()
+            res = [
+                p for p in paises
+                if parte in str(p.get("CONTINENTE", "")).lower()
+            ]
+            printpaises(res)
+            return res
+
+        elif opc == "2":
+            minimo = input("Población mínima (o enter para omitir): ").strip()
+            maximo = input("Población máxima (o enter para omitir): ").strip()
+            min_val = int(minimo) if minimo.isdigit() else None
+            max_val = int(maximo) if maximo.isdigit() else None
+
+            def ok(val):
+                if min_val is not None and val < min_val: return False
+                if max_val is not None and val > max_val: return False
+                return True
+
+            res = [p for p in paises if ok(p["POBLACION"])]
+            printpaises(res)
+            return res
+
+        elif opc == "3":
+            minimo = input("Superficie mínima (o enter para omitir): ").strip()
+            maximo = input("Superficie máxima (o enter para omitir): ").strip()
+            min_val = int(minimo) if minimo.isdigit() else None
+            max_val = int(maximo) if maximo.isdigit() else None
+
+            def ok(val):
+                if min_val is not None and val < min_val: return False
+                if max_val is not None and val > max_val: return False
+                return True
+
+            res = [p for p in paises if ok(p["SUPERFICIE"])]
+            printpaises(res)
+            return res
+
+        elif opc == "4":
+            def densidad(p):
+                sup = p["SUPERFICIE"]
+                return p["POBLACION"] / sup if sup > 0 else 0
+
+            minimo = input("Densidad mínima (o enter para omitir): ").strip()
+            maximo = input("Densidad máxima (o enter para omitir): ").strip()
+
+            min_val = float(minimo) if minimo.replace(".", "", 1).isdigit() else None
+            max_val = float(maximo) if maximo.replace(".", "", 1).isdigit() else None
+
+            def ok(d):
+                if min_val is not None and d < min_val: return False
+                if max_val is not None and d > max_val: return False
+                return True
+
+            res = [p for p in paises if ok(densidad(p))]
+            printpaises(res)
+            return res
+
+        elif opc == "5":
+            return paises
+        else:
+            print("Opción inválida de filtro.")
+
+def ordenar_paises(paises): ## Funcion para ordenar paises segun diferentes criterios
+    """
+    Pide criterio y sentido, y devuelve una nueva lista ordenada.
+    Criterios: NOMBRE, POBLACION, SUPERFICIE, CONTINENTE, DENSIDAD
+    """
+    if not paises:
+        print("No hay países cargados para ordenar.")
+        return []
+
+    print("=== CRITERIOS DE ORDEN ===")
+    print("1) NOMBRE")
+    print("2) POBLACION")
+    print("3) SUPERFICIE")
+    print("4) CONTINENTE")
+    print("5) DENSIDAD (población/superficie)")
+    opc = input("Opción: ").strip()
+
+    clave = None
+    if opc == "1":
+        clave = lambda p: str(p["NOMBRE"]).lower()
+    elif opc == "2":
+        clave = lambda p: p["POBLACION"]
+    elif opc == "3":
+        clave = lambda p: p["SUPERFICIE"]
+    elif opc == "4":
+        clave = lambda p: str(p["CONTINENTE"]).lower()
+    elif opc == "5":
+        clave = lambda p: (p["POBLACION"] / p["SUPERFICIE"]) if p["SUPERFICIE"] > 0 else float("inf")
+    else:
+        print("Opción inválida.")
+        return paises
+
+    sentido = input("Orden ascendente (A) o descendente (D): ").strip().lower()
+    reverse = (sentido == "d")
+
+    ordenada = sorted(paises, key=clave, reverse=reverse)
+    printpaises(ordenada)
+    return ordenada     
+
+def mostrar_estadisticas(paises):  ## Funcion para mostrar estadisticas de los paises cargados
+
+    if not paises:
+        print("No hay países cargados para estadísticas.")
+        return
+
+    n = len(paises)
+    pobl_total = sum(p["POBLACION"] for p in paises)
+    sup_total = sum(p["SUPERFICIE"] for p in paises)
+    prom_pobl = pobl_total / n if n else 0
+    prom_sup = sup_total / n if n else 0
+
+    mayor_pob = max(paises, key=lambda p: p["POBLACION"])
+    menor_pob = min(paises, key=lambda p: p["POBLACION"])
+    mayor_sup = max(paises, key=lambda p: p["SUPERFICIE"])
+    menor_sup = min(paises, key=lambda p: p["SUPERFICIE"])
+
+    densidades = [
+        (p["NOMBRE"], (p["POBLACION"] / p["SUPERFICIE"]) if p["SUPERFICIE"] > 0 else 0)
+        for p in paises
+    ]
+    dens_prom = sum(d for _, d in densidades) / n if n else 0
+    d_max = max(densidades, key=lambda x: x[1])
+    d_min = min(densidades, key=lambda x: x[1])
+
+    print("====== ESTADÍSTICAS ======")
+    print(f"Cantidad de países: {n}")
+    print(f"Población total: {pobl_total}")
+    print(f"Población promedio: {prom_pobl:.2f}")
+    print(f"Superficie total: {sup_total}")
+    print(f"Superficie promedio: {prom_sup:.2f}")
+    print(f"Mayor población: {mayor_pob['NOMBRE']} ({mayor_pob['POBLACION']})")
+    print(f"Menor población: {menor_pob['NOMBRE']} ({menor_pob['POBLACION']})")
+    print(f"Mayor superficie: {mayor_sup['NOMBRE']} ({mayor_sup['SUPERFICIE']})")
+    print(f"Menor superficie: {menor_sup['NOMBRE']} ({menor_sup['SUPERFICIE']})")
+    print(f"Densidad promedio: {dens_prom:.4f} hab/km²")
+    print(f"Mayor densidad: {d_max[0]} ({d_max[1]:.4f} hab/km²)")
+    print(f"Menor densidad: {d_min[0]} ({d_min[1]:.4f} hab/km²)")
+    print("===========================")
+
+
 def main(): #Funcion principal que contiene el menu iterativo, de esta forma evitamos variables globales
     
     paises= crear_o_cargar_CSV()
@@ -215,13 +383,14 @@ def main(): #Funcion principal que contiene el menu iterativo, de esta forma evi
 
                 
             case "4":
-                pass
+                filtrados = filtrar_paises(paises)               
                     
             case "5": 
-                pass
+                _ = ordenar_paises(paises)
                 
             case "6": 
-                pass
+                mostrar_estadisticas(paises)
+
                 
             case "7":
                 print("Cerrando programa...")
