@@ -103,7 +103,7 @@ def printpaises(paises):
         print(f"NOMBRE: {p['NOMBRE']}, POBLACION: {p['POBLACION']}, SUPERFICIE: {p['SUPERFICIE']}, CONTINENTE: {p['CONTINENTE']}")
     print("=======")
 
-def filtrar_paises(paises): ## Funcion para filtrar paises segun diferentes criterios
+def filtrar_paises(paises): ## Funcion para filtrar paises segun diferentes criterios.
 
     if not paises:
         print("No hay países cargados para filtrar.")
