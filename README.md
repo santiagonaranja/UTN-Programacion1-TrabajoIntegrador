@@ -26,8 +26,8 @@ Todo se almacena de forma persistente en el CSV, por lo que los datos quedan gua
 
 3. Al ejecutarse se mostrara un menu como este:
     
-    ===GESTIÓN DE DATASET DE PAISES===\n
-      Ingrese 1 para Ingresar un país con sus datos\n
+    ===GESTIÓN DE DATASET DE PAISES===/n
+      Ingrese 1 para Ingresar un país con sus datos/n
       Ingrese 2 para Actualizar los datos de población y superficie de un pais\n
       Ingrese 3 para Buscar un pais por nombre\n
       Ingrese 4 para Filtrar paises\n
