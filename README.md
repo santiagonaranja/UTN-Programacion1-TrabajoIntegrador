@@ -54,16 +54,16 @@ EJEMPLO 1:
     
 2. La salida en la consola ser:
 
-      =======
-      El pais 'Argentina' fue ingresado correctamente con una poblacion de 46000000, una superficie de 2780000, y el continente América.
-      =======
-      Se agreggo el pais correctamente al CSV con todos sus datos.
-      ==========================================
+         =======
+         El pais 'Argentina' fue ingresado correctamente con una poblacion de 46000000, una superficie de 2780000, y el continente América.
+         =======
+         Se agreggo el pais correctamente al CSV con todos sus datos.
+         ==========================================
 
     
 4. El contenido del CSV luego de esto sera:
-    nombre,poblacion,superficie,continente
-    Argentina,46000000,2780000,América
+      nombre,poblacion,superficie,continente
+      Argentina,46000000,2780000,América
 
 EJEMPLO 2:
 1. Otro ejmeplo, caso de que ingresen opción 6:
