@@ -26,14 +26,14 @@ Todo se almacena de forma persistente en el CSV, por lo que los datos quedan gua
 
 3. Al ejecutarse se mostrara un menu como este:
     
-    ===GESTIÓN DE DATASET DE PAISES===
-      Ingrese 1 para Ingresar un país con sus datos
-      Ingrese 2 para Actualizar los datos de población y superficie de un pais
-      Ingrese 3 para Buscar un pais por nombre
-      Ingrese 4 para Filtrar paises
-      Ingrese 5 para Ordenar países
-      Ingrese 6 para Mostrar estadísticas
-      Ingrese 7 para Salir
+       ===GESTIÓN DE DATASET DE PAISES===
+         Ingrese 1 para Ingresar un país con sus datos
+         Ingrese 2 para Actualizar los datos de población y superficie de un pais
+         Ingrese 3 para Buscar un pais por nombre
+         Ingrese 4 para Filtrar paises
+         Ingrese 5 para Ordenar países
+         Ingrese 6 para Mostrar estadísticas
+         Ingrese 7 para Salir
 
       El usuario debe ingresar el número de opción y seguir las instrucciones en pantalla.
 
@@ -55,12 +55,13 @@ EJEMPLO 1:
 2. La salida en la consola ser:
 
       =======
-    El pais 'Argentina' fue ingresado correctamente con una poblacion de 46000000, una superficie de 2780000, y el continente América.
-    =======
-    Se agreggo el pais correctamente al CSV con todos sus datos.
-    ==========================================
+      El pais 'Argentina' fue ingresado correctamente con una poblacion de 46000000, una superficie de 2780000, y el continente América.
+      =======
+      Se agreggo el pais correctamente al CSV con todos sus datos.
+      ==========================================
+
     
-3. El contenido del CSV luego de esto sera:
+4. El contenido del CSV luego de esto sera:
     nombre,poblacion,superficie,continente
     Argentina,46000000,2780000,América
 
@@ -68,20 +69,22 @@ EJEMPLO 2:
 1. Otro ejmeplo, caso de que ingresen opción 6:
 
 2. La salida de la consola sera:
-    ====== ESTADÍSTICAS ======
-    Cantidad de países: 3
-    Población total: 410000000
-    Población promedio: 136666666.67
-    Superficie total: 14000000
-    Superficie promedio: 4666666.67
-    Mayor población: Estados Unidos (330000000)
-    Menor población: Uruguay (3500000)
-    Mayor superficie: Estados Unidos (9834000)
-    Menor superficie: Uruguay (176215)
-    Densidad promedio: 45.2378 hab/km²
-    Mayor densidad: Uruguay (19.8654 hab/km²)
-    Menor densidad: Argentina (16.9061 hab/km²)
-    ===========================
+
+         ====== ESTADÍSTICAS ======
+         Cantidad de países: 3
+         Población total: 410000000
+         Población promedio: 136666666.67
+         Superficie total: 14000000
+         Superficie promedio: 4666666.67
+         Mayor población: Estados Unidos (330000000)
+         Menor población: Uruguay (3500000)
+         Mayor superficie: Estados Unidos (9834000)
+         Menor superficie: Uruguay (176215)
+         Densidad promedio: 45.2378 hab/km²
+         Mayor densidad: Uruguay (19.8654 hab/km²)
+         Menor densidad: Argentina (16.9061 hab/km²)
+         ===========================
+
 
     
 
