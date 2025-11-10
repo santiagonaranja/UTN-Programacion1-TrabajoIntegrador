@@ -26,22 +26,22 @@ Todo se almacena de forma persistente en el CSV, por lo que los datos quedan gua
 
 3. Al ejecutarse se mostrara un menu como este:
     
-    ===GESTIÓN DE DATASET DE PAISES===/n
-      Ingrese 1 para Ingresar un país con sus datos/n
-      Ingrese 2 para Actualizar los datos de población y superficie de un pais\n
-      Ingrese 3 para Buscar un pais por nombre\n
-      Ingrese 4 para Filtrar paises\n
-      Ingrese 5 para Ordenar países\n
-      Ingrese 6 para Mostrar estadísticas\n
-      Ingrese 7 para Salir\n
+    ===GESTIÓN DE DATASET DE PAISES===
+      Ingrese 1 para Ingresar un país con sus datos
+      Ingrese 2 para Actualizar los datos de población y superficie de un pais
+      Ingrese 3 para Buscar un pais por nombre
+      Ingrese 4 para Filtrar paises
+      Ingrese 5 para Ordenar países
+      Ingrese 6 para Mostrar estadísticas
+      Ingrese 7 para Salir
 
-El usuario debe ingresar el número de opción y seguir las instrucciones en pantalla.
+      El usuario debe ingresar el número de opción y seguir las instrucciones en pantalla.
 
 4. El programa cuenta con las siguientes validaciones:
-  - No permite dejar campos vacíos en los datos obligatorios.
-  - Para población, superficie y densidad solo acepta valores numéricos positivos.
-  - Si se intenta agregar un país que ya existe, pide otro nombre.
-  - Si se intenta actualizar un país que no existe, lo informa.
+     - No permite dejar campos vacíos en los datos obligatorios.
+     - Para población, superficie y densidad solo acepta valores numéricos positivos.
+     - Si se intenta agregar un país que ya existe, pide otro nombre.
+     - Si se intenta actualizar un país que no existe, lo informa.
 
 ## 3. Ejemplos de entrada y salida
 
@@ -53,11 +53,13 @@ EJEMPLO 1:
     Ingresar el continente del pais 'Argentina': América
     
 2. La salida en la consola ser:
-       =======
+
+      =======
     El pais 'Argentina' fue ingresado correctamente con una poblacion de 46000000, una superficie de 2780000, y el continente América.
     =======
     Se agreggo el pais correctamente al CSV con todos sus datos.
     ==========================================
+    
 3. El contenido del CSV luego de esto sera:
     nombre,poblacion,superficie,continente
     Argentina,46000000,2780000,América
