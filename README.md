@@ -47,12 +47,13 @@ Todo se almacena de forma persistente en el CSV, por lo que los datos quedan gua
 
 EJEMPLO 1:
 1. Al ingresar la opción 1 y completarla con los siguientes datos:
-    Ingresar el nombre del pais a almacenar: Argentina
-    Ingresar la población del pais 'Argentina': 46000000
-    Ingresar la superficie del pais 'Argentina': 2780000
-    Ingresar el continente del pais 'Argentina': América
+
+         Ingresar el nombre del pais a almacenar: Argentina
+         Ingresar la población del pais 'Argentina': 46000000
+         Ingresar la superficie del pais 'Argentina': 2780000
+         Ingresar el continente del pais 'Argentina': América
     
-2. La salida en la consola ser:
+3. La salida en la consola ser:
 
          =======
          El pais 'Argentina' fue ingresado correctamente con una poblacion de 46000000, una superficie de 2780000, y el continente América.
@@ -62,11 +63,12 @@ EJEMPLO 1:
 
     
 4. El contenido del CSV luego de esto sera:
-      nombre,poblacion,superficie,continente
-      Argentina,46000000,2780000,América
+
+         nombre,poblacion,superficie,continente
+         Argentina,46000000,2780000,América
 
 EJEMPLO 2:
-1. Otro ejmeplo, caso de que ingresen opción 6:
+1. Otro ejmeplo, caso de que ingresen opción 6.
 
 2. La salida de la consola sera:
 
